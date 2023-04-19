@@ -1,0 +1,16 @@
+{
+  "name": "calinder",
+  "version": "1.0.0",
+  "description": "simple program that tells you the day and the month :)",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "run": "node dist/main.js",
+    "start": "tsc && node dist/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-strings": "^1.0.2"
+  }
+}
