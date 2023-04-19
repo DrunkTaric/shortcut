@@ -1,0 +1,25 @@
+{
+  "name": "shortcut",
+  "version": "1.0.0",
+  "description": "just a way to automate things on my pc but feel free to use it",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrunkTaric/shortcut.git"
+  },
+  "author": "ComboRush#1171",
+  "bugs": {
+    "url": "https://github.com/DrunkTaric/shortcut/issues"
+  },
+  "homepage": "https://github.com/DrunkTaric/shortcut#readme",
+  "dependencies": {
+    "cli-select": "^1.1.2",
+    "node-strings": "^1.0.2",
+    "prompt-sync": "^4.2.0",
+    "shell-exec": "^1.1.2"
+  }
+}
