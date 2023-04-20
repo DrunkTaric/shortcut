@@ -38,7 +38,7 @@ _______________________________
 | 22  | 23  | 24  | 25  | 26  |
 | 27  | 28  | 29  | 30  | 31  |
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-`.replace((time.getDay() + 1).toString(), strings.green((time.getDay() + 1).toString()))
+`.replace((time.getDay()).toString(), strings.green((time.getDay()).toString()))
 )
 }
 
