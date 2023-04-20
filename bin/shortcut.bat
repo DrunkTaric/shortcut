@@ -1,0 +1,1 @@
+node YOURPATH\dist\main.js
