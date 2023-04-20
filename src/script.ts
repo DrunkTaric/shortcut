@@ -27,14 +27,12 @@ function get() {
 }
 
 export function find(name: string) {
-    if (!fs.existsSync(`${os.homedir()}/Documents/shortcut`)) fs.mkdirSync(`${os.homedir()}/Documents/shortcut`)
-    if (!fs.existsSync(`${os.homedir()}/Documents/shortcut/scripts`)) fs.mkdirSync(`${os.homedir()}/Documents/shortcut/scripts`)
-    if (fs.existsSync(`${os.homedir()}/Documents/shortcut/scripts/${name}`)) return true
-    return false
+    let cpath: string = path.join(__dirname, "..")
+    return fs.existsSync(`${path.join(cpath, "scripts", name)}`)
 }
 
 export function create(type: string) {
-    let cpath: string = path.join(os.homedir(), "/Documents/shortcut/")
+    let cpath: string = path.join(__dirname, "..")
     let dpath: string = path.join(__dirname, "../default/", type)
     let dir = fs.readdirSync(dpath)
     let name: string = get()
@@ -58,7 +56,7 @@ export function create(type: string) {
             break
         }
     }
-    fs.writeFileSync(`${cpath}${name}.bat`, data)
+    fs.writeFileSync(`${path.join(cpath, "bin/")}${name}.bat`, data)
 
     dir.forEach((file_name: string) => {
         if (fs.statSync(path.join(dpath, file_name)).isDirectory()) {
@@ -73,23 +71,25 @@ export function create(type: string) {
             fs.writeFileSync(`${path.join(cpath, "scripts", name)}/${file_name}`, data)
         }
     })
-    prompt(`code ${os.homedir()}/Documents/shortcut/scripts/${name}`)
+    prompt(`code ${path.join(cpath, "scripts", name)}`)
 }
 
 export function remove() {
     let name = get()
+    let cpath: string = path.join(__dirname, "..")
 
     if (name == "shortcut") return new Error(["You can't remove script with name: ", strings.underline(strings.red(name))])
     if (!find(name)) return new Error(["script doesn't exist!"])
 
-    fs.rmSync(`${os.homedir()}/Documents/shortcut/scripts/${name}`, {force: true, recursive: true})
-    fs.rmSync(`${os.homedir()}/Documents/shortcut/${name}.bat`)
+    fs.rmSync(path.join(cpath, "scripts", name), {force: true, recursive: true})
+    fs.rmSync(`${path.join(cpath, "bin/")}${name}.bat`)
 }
 
 export function edit() {
     let name = get()
+    let cpath: string = path.join(__dirname, "..")
 
     if (!find(name)) return new Error(["script doesn't exist!"])
 
-    prompt(`code ${os.homedir()}/Documents/shortcut/scripts/${name}`)
+    prompt(`code ${path.join(cpath, "scripts", name)}`)
 }
