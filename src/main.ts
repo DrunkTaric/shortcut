@@ -1,6 +1,8 @@
-import strings from "node-strings";
-import cliSelect from "cli-select";
-import { args, create, remove, edit, find } from "./script";
+import fs from "fs"
+import path from "path"
+import strings from "node-strings"
+import cliSelect from "cli-select"
+import { args, create, remove, edit, find } from "./script"
 
 function main() {
     console.log(strings.red(`
@@ -26,7 +28,7 @@ function main() {
             switch(res.value) {
                 case "create":
                     cliSelect({
-                        values: ["bat", "javascript", "typescript"], 
+                        values: fs.readdirSync(path.join(__dirname, "..", "default")).map(folder => folder), 
                         valueRenderer: (value: String, selected: boolean) => { 
                             if(selected) {
                                 return strings.yellow(strings.underline(value))
