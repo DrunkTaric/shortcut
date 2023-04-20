@@ -27,7 +27,9 @@ enum Day {
 
 function main () {
     let time = new Date()
-    console.error(`month - day
+    console.log(strings.red(Months[time.getMonth()]))
+    console.log(strings.yellow(Day[time.getUTCDay()]))
+    console.log(`
 _______________________________
 |  1  |  2  |  3  |  4  |  5  |
 |  6  |  7  |  8  |  9  | 10  |
@@ -36,10 +38,8 @@ _______________________________
 | 22  | 23  | 24  | 25  | 26  |
 | 27  | 28  | 29  | 30  | 31  |
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-`
-    .replace("month", strings.red(Months[time.getMonth()]))
-    .replace("day", strings.magenta(Day[time.getUTCDay()]))
-    .replace((time.getDay() + 1).toString(), strings.yellow((time.getDay() + 1).toString())))
+`.replace((time.getDay() + 1).toString(), strings.green((time.getDay() + 1).toString()))
+)
 }
 
 main()
